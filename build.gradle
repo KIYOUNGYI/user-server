@@ -23,21 +23,34 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
+
 jib {
 	from {
-		image = 'openjdk:21'
+		image = "openjdk:21"
+		//platform
 	}
 	to {
-		image = '{ecr주소}/user-server'
-		tags = ['0.0.1']
+		image = "yky2798/user-server"//ecr image 주소
+		tags = ['0.0.3']
+		auth {
+			username = project.provider { System.getenv("DOCKER_USERNAME") ?: "you have to configure this" }
+			password = project.provider { System.getenv("DOCKER_PASSWORD") ?: "you have to configure this" }
+		}
 	}
 	container {
-		creationTime = 'USE_CURRENT_TIMESTAMP'
+		creationTime = "USE_CURRENT_TIMESTAMP"
+	}
+	//이게 있어야 로컬 jibDockerBuild 가 되는군
+	dockerClient {
+		executable = '/usr/local/bin/docker'
 	}
 }

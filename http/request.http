@@ -1,0 +1,28 @@
+###
+GET http://{{host}}/healthcheck/live
+
+###
+POST http://{{host}}/api/users
+Content-Type: application/json
+
+{
+  "username": "kiyoung",
+  "email": "yky2798@gmail.com",
+  "plainPassword": "a!"
+}
+
+###
+GET http://{{host}}/api/users/1
+
+###
+GET http://{{host}}/api/users/name/{{name}}
+
+###
+POST http://{{host}}/api/users/signIn
+Content-Type: application/json
+
+{
+  "username": "kiyoung",
+  "email": "yky2798@gmail.com",
+  "plainPassword": "a!"
+}
