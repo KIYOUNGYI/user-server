@@ -40,7 +40,7 @@ jib {
 	}
 	to {
 		image = "yky2798/user-server"//ecr image 주소
-		tags = ['0.0.3']
+		tags = ['0.0.4']
 		auth {
 			username = project.provider { System.getenv("DOCKER_USERNAME") ?: "you have to configure this" }
 			password = project.provider { System.getenv("DOCKER_PASSWORD") ?: "you have to configure this" }
