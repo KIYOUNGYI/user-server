@@ -23,6 +23,7 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.springframework.kafka:spring-kafka'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -40,7 +41,7 @@ jib {
 	}
 	to {
 		image = "yky2798/user-server"//ecr image 주소
-		tags = ['0.0.4']
+		tags = ['0.0.5']
 		auth {
 			username = project.provider { System.getenv("DOCKER_USERNAME") ?: "you have to configure this" }
 			password = project.provider { System.getenv("DOCKER_PASSWORD") ?: "you have to configure this" }

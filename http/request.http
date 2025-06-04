@@ -6,8 +6,8 @@ POST http://{{host}}/api/users
 Content-Type: application/json
 
 {
-  "username": "dummy02",
-  "email": "dummy02@gmail.com",
+  "username": "dummy01",
+  "email": "dummy01@gmail.com",
   "plainPassword": "a!"
 }
 

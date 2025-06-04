@@ -1,8 +1,10 @@
 package com.example.userserver.user;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -20,6 +22,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserInfo> getUserInfo(@PathVariable("id") int id) {
+        log.info("UserController.getUserInfo : " + id);
         UserInfo user = userService.getUser(id);
         if (user == null) {
             return ResponseEntity.notFound().build();

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: user-container
-          image: yky2798/user-server:0.0.4
+          image: yky2798/user-server:0.0.5
           imagePullPolicy: IfNotPresent
           env:
             - name: SPRING_PROFILES_ACTIVE
@@ -27,6 +27,10 @@ spec:
                 name: mysql-config
             - secretRef:
                 name: mysql-secret
+            - configMapRef:
+                name: kafka-config
+            - secretRef:
+                name: kafka-secret
           resources:
             requests:
               memory: "512Mi"
